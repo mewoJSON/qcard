@@ -34,3 +34,5 @@ def password_check(email, password) -> bool:
     pswd = c.fetchone()[0] # sob
     return True if pswd == password else False
     
+# uncomment this 
+# create_table()

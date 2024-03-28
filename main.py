@@ -4,8 +4,8 @@ from utils.database import insert_user, user_in_database, password_check
 # Load Instance
 app = Flask(__name__)
 
+# Initialize root page
 @app.route('/')
-
 def index():
     return redirect(url_for("sign"), code=302)
 
@@ -13,6 +13,7 @@ def index():
 def sign():
     if request.method == "POST":
         insert_user(request.form["user"], request.form["pswd"], request.form["email"])
+        # If POST, send data to database
     else:
         return render_template("sign.html", code=302)
 
@@ -22,7 +23,7 @@ def login():
         email = request.form["email"]
         password = request.form["password"]
 
-    # this is messy, todo
+    # this is messy, to-do
         if user_in_database(email) == True:
             if password_check(email, password):
                 return f"<h1>Welcome {email} </h1>"
