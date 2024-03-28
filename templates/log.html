@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<img src="https://cdn.discordapp.com/attachments/1180085344704659509/1222823467733352550/standbylogo.png?ex=66179e19&is=66052919&hm=1daced9939ee26d4c4afb1d3475a082b5b5c24d9a31b953775367c00f9017c17&                            "
+    class=" float-start pb-3" style="width: 20%;">
+
+<!--Back end, look here-->
+<form method="post">
+    <input type="email" class="form-control mb-3 my-2 py-2" name="email" placeholder="Email" required>
+    <input type="password" class="form-control mb-3 my-3 py-2" name="password" placeholder="Password" required>
+    {% if msg %}
+    
+    <p class="text-danger"> {{ msg }}</p>
+    
+    {% endif %}
+    <button type="submit" value="submit" class="btn btn-primary mt-2 mx-2">Log In</button>
+    
+</form>
+<form action="{{ url_for('sign')}}" method="GET">
+    <button type="submit" class="btn btn-outline-primary mt-2">Create an Account</button>
+</form>
+<!--Until here-->
+
+
+
+
+{% endblock %}

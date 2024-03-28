@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<img src="https://cdn.discordapp.com/attachments/1180085344704659509/1222823467733352550/standbylogo.png?ex=66179e19&is=66052919&hm=1daced9939ee26d4c4afb1d3475a082b5b5c24d9a31b953775367c00f9017c17&                            "
+    class=" float-start pb-3" style="width: 20%;">
+<form method="post">
+    
+    <input type="text" class="form-control mb-3 my-2 py-2" name="user" placeholder="Name" required>
+    <input type="email"  class="form-control mb-3 my-2 py-2" name="email" placeholder="Email" required>
+    <input type="password"  class="form-control mb-3 my-3 py-2" name="pswd" placeholder="Password" required>
+    <input type="text" class="form-control mb-3 my-3 py-2" id="TO-DO" placeholder="Confirm Password" required>
+
+    <div>
+        <input name="teacher" class="form-check-input" type="checkbox">
+        <label class="form-check-label" for="teacher-check"> Are you a Teacher? </label>
+    </div>
+
+    <br>
+    <button type="submit" value="submit" class="btn btn-primary mt-2 mx-2">Sign Up</button>
+</form>
+<form action="{{ url_for('login')}}" method="GET">
+    <button type="submit" action class="btn btn-outline-primary mt-2">Log In with Existing Account</button>
+</form>
+
+{% endblock %}
