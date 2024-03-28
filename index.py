@@ -8,6 +8,12 @@ app = Flask(__name__)
 def index():
     return render_template("index.html")
 
+#INVALID URL
 @app.errorhandler(404)
 def page_not_found(e):
-    return "<h1>404</h1>"
+    return render_template("404.html"), 404
+
+#SERVER ERROR
+@app.errorhandler(505)
+def page_not_found(e):
+    return render_template("505.html"), 505
