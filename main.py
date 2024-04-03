@@ -1,5 +1,6 @@
 from flask import Flask, render_template, redirect, url_for, request
 from utils.database import insert_user, user_in_database, password_check
+from errors.handlers import *
 
 # Load Instance
 app = Flask(__name__)
