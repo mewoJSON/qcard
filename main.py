@@ -1,6 +1,7 @@
-from flask import Flask, render_template, redirect, url_for, request
-from utils.database import insert_user, user_in_database, password_check
+from flask import Flask, render_template, redirect, url_for, request, session
+from utils.users_db import *
 from errors.handlers import *
+from utils.game_status import *
 
 # Load Instance
 app = Flask(__name__)
@@ -8,7 +9,7 @@ app = Flask(__name__)
 @app.route('/')
 
 def index():
-    return redirect(url_for("sign"), code=302)
+    return redirect(url_for("home"), code=302)
 
 @app.route('/sign', methods=['GET','POST'])
 def sign():
@@ -23,16 +24,28 @@ def login():
         email = request.form["email"]
         password = request.form["password"]
 
-    # this is messy, todo
-        if user_in_database(email) == True:
+        if user_in_database(email):
             if password_check(email, password):
-                return f"<h1>Welcome {email} </h1>"
+                return redirect(url_for('home'))   
             else:
                 return render_template("log.html", msg="Password is wrong")
         else:
             return render_template("log.html", msg="User does not exist")
     else:
         return render_template("log.html", code=302)
+    
+@app.route('/home')
+def home():
+    return render_template("game.html")
+
+
+@app.route('/game')
+def game():
+    idx = 0
+    game_info = get_game_array()
+    question, answer, image = generate_question(game_info[0])
+    
+
 
 if __name__ == "__main__":
     app.run(debug=True)

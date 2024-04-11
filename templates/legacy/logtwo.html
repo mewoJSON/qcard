@@ -1,0 +1,36 @@
+{% extends 'layout.html'%}
+
+{% block page %}
+
+<div class="card mb-3 " style="">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img
+          src="/static/img/logo_full.png"
+          alt="Trendy Pants and Shoes"
+          class="img-fluid rounded-start"
+          style="object-fit:contain;"
+        />
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <p class="card-text">
+            Welcome back!
+          </p>
+          <div class="form-outline my-3" data-mdb-input-init>
+            <input type="email" id="typeEmail" class="form-control" />
+            <label class="form-label" for="typeEmail">Email input</label>
+          </div>
+          <div class="form-outline my-3" data-mdb-input-init>
+            <input type="password" id="typePassword" class="form-control" />
+            <label class="form-label" for="typePassword">Password input</label>
+          </div>
+          <br>
+          <br>
+          <button type="button" class="btn btn-outline-primary w-100" data-mdb-ripple-init data-mdb-ripple-color="dark">Log In</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
