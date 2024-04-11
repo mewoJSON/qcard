@@ -6,8 +6,8 @@ from utils.game_status import *
 # Load Instance
 app = Flask(__name__)
 
+# Initialize root page
 @app.route('/')
-
 def index():
     return redirect(url_for("home"), code=302)
 
@@ -15,6 +15,7 @@ def index():
 def sign():
     if request.method == "POST":
         insert_user(request.form["user"], request.form["pswd"], request.form["email"])
+        # If POST, send data to database
     else:
         return render_template("sign.html", code=302)
 
@@ -24,7 +25,12 @@ def login():
         email = request.form["email"]
         password = request.form["password"]
 
+<<<<<<< HEAD
         if user_in_database(email):
+=======
+    # this is messy, to-do
+        if user_in_database(email) == True:
+>>>>>>> e75875bc36ff8cbde355c1709c5fcf17dc3523c4
             if password_check(email, password):
                 return redirect(url_for('home'))   
             else:

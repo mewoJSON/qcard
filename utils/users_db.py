@@ -44,6 +44,7 @@ def password_check(email, password) -> bool:
     pswd = c.fetchone()[0] # sob
     return True if pswd == password else False
     
+<<<<<<< HEAD:utils/users_db.py
 def get_game_array():
     c.execute("SELECT name, date, creator, location, product, image FROM object")
     rows = c.fetchall()
@@ -53,3 +54,7 @@ def get_game_array():
     return result
 
 get_game_array()
+=======
+# uncomment this 
+# create_table()
+>>>>>>> e75875bc36ff8cbde355c1709c5fcf17dc3523c4:utils/database.py
