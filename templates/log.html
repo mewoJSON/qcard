@@ -1,3 +1,11 @@
+<!--
+    log.html
+
+    log in page for the website
+    uses layout.html to control the dimensions of the page considering it uses the same structure to sign.html
+    form control is handled in main, html page avoids handling forms
+-->
+
 {% extends "layout.html" %}
 
 
@@ -7,6 +15,7 @@
     class=" float-start pb-3 justify-content-center  align-items-center" style="width: 20%;">
 <!--Back end, look here-->
 <form method="post">
+    <!-- name is used as an id system, main checks the content inside the form and uses it -->
     <input type="email" class="form-control mb-3 my-2 py-2" name="email" placeholder="Email" required>
     <input type="password" class="form-control mb-3 my-3 py-2" name="password" placeholder="Password" required>
     {% if msg %}

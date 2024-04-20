@@ -17,6 +17,8 @@ def create_table() -> None:
         product TEXT)
         ''')
 
+# DBMS functions
+# insert users, insert object, check if users exist, 
 def insert_user(name, password, email) -> None:
     user_id = str(uuid.uuid4())
     c.execute('''
@@ -38,12 +40,16 @@ def user_in_database(email) -> bool:
     fetch = c.fetchone()[0]
     return bool(fetch)
 
-# this is awful and just for test purposes
+# password function
+# our scope could not deal with password security, password should be hashed instead of be passed down as a string
+# alternatively, the page could use an email link/authentification log-in to avoid dealing with password security
 def password_check(email, password) -> bool:
     c.execute(f'''SELECT password FROM users WHERE email = ?''', (email,))
     pswd = c.fetchone()[0] # sob
     return True if pswd == password else False
-    
+
+# unfinished game function
+# program should return the database in array format and be passed as a paremeter through jinja
 def get_game_array():
     c.execute("SELECT name, date, creator, location, product, image FROM object")
     rows = c.fetchall()
@@ -52,4 +58,3 @@ def get_game_array():
     print(result)
     return result
 
-get_game_array()
