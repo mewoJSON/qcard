@@ -10,7 +10,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Items</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -21,7 +21,7 @@
                             <th>
                                 Img
                             </th>
-                            <th>Email</th>
+                            <th>Item</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -39,7 +39,7 @@
                         <td>
                             <div class="container"><img src="/static/img_card/chair.webp" class="size-img"> </div>
                         </td>
-                        <td>generic@gmail.com</td>
+                        <td>chair</td>
                         <td>
                             <a href="#!">
                                 edit
@@ -47,7 +47,7 @@
                         </td>
                         </tr>
 
-                        {% with img="/static/img_card/chair.webp", obj="chair" %}
+                        {% with img="/static/img_card/desk.webp", obj="chair" %}
                         {% include 'obj_item.html' %}
                         {% endwith %}
 

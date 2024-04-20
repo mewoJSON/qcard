@@ -1,10 +1,11 @@
 {% extends "layout.html" %}
 
+
 {% block page %}
 
 <img src="/static/img/logo_small.png"
-    class=" float-start pb-3" style="width: 20%;">
-
+    class=" float-start pb-3 justify-content-center  align-items-center" style="width: 20%;">
+<!--Back end, look here-->
 <form method="post">
     <input type="email" class="form-control mb-3 my-2 py-2" name="email" placeholder="Email" required>
     <input type="password" class="form-control mb-3 my-3 py-2" name="password" placeholder="Password" required>
@@ -19,6 +20,7 @@
 <form action="{{ url_for('sign')}}" method="GET">
     <button type="submit" class="btn btn-outline-primary mt-2">Create an Account</button>
 </form>
+<!--Until here-->
 
 
 

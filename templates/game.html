@@ -4,7 +4,13 @@
 <body>
     {% include 'navbar.html' %}
     <div class="d-flex justify-content-center pt-5">
+    {% with messages = 'a' %}
     {% include 'flashcard.html' %}
+    {% endwith %}
+
+    {% with messages = 'a' %}
+    {% include 'flashcard.html' %}
+    {% endwith %}
     </div>
 </body>
 {% endblock %}

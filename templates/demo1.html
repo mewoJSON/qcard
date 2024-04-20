@@ -1,0 +1,205 @@
+{% extends "header.html" %}
+
+{% block body %}
+<style>
+    .flashcard-clicked {
+        width: 400px;
+        height: 400px;
+        animation: stretch 0.5s ease forwards;
+    }
+
+    @keyframes stretch {
+        0% {
+            transform: scaleY(1);
+        }
+
+        100% {
+            transform: scaleY(0);
+        }
+
+    }
+
+    .flashcard-appear {
+        width: 400px;
+        height: 400px;
+        animation: appear 0.5s ease forwards;
+    }
+
+    @keyframes appear {
+        0% {
+            transform: scaleY(0);
+        }
+
+        100% {
+            transform: scaleY(1);
+        }
+
+    }
+
+    .correct {
+        border: 4px;
+        border-style: solid;
+        border-color: greenyellow;
+    }
+
+    .correct-text {
+        color: green
+    }
+
+    .wrong {
+        border: 4px;
+        border-style: solid;
+        border-color: red;
+    }
+
+    .wrong-text {
+        color: red
+    }
+
+    
+</style>
+
+<body>
+    {% include 'navbar.html' %}
+    <h2 class="mx-3 my-3">Patent Assignment #1</h2>
+    <div class="d-flex justify-content-center align-items-center flex-column pt-5">
+
+        <div id="1" class="pt-4">
+            <div class="card" id="c1" style="max-height: 900px; width: 400px; object-fit: cover;">
+                <h3 class="card-title text-center"> Person: Sarah Little Turnbull </h3>
+                <h5 class="card-title text-center mb-4"> American Product Designer </h5>
+
+                <img src="/static/img/sarah.png" class="card-img-top " alt="Fissure in Sandstone" />
+                <div class="card-body">
+                    <p class="card-title"><i>Described as "corporate America's secret weapon"</i></p>
+                    <form class="form-inline">
+                        <div class="form-group">
+                          <label for="inputPassword6">Product Designed: </label>
+                          <input style="width: 100px;" type="text" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline">
+                        </div>
+                      </form>
+    
+
+                </div>
+                <a href="#2" id="one">
+                    <div class="card-footer bg-primary text-light text-center">
+                        Check
+                    </div>
+                </a>
+            </div>
+        </div>
+        <br class="my-5">
+        <div id="2" class="pt-4">
+            <div class="card" id="c2" style="max-height: 900px; width: 400px; object-fit: cover;">
+                <h3 class="card-title text-center"> Object: n95 Mask </h3>
+                <h5 class="card-title text-center mb-4"> N95 Filtering Facepiece Respiraton (FFR) </h5>
+
+                <img src="/static/img/mask.png" class="card-img-top " alt="Fissure in Sandstone" />
+                <div class="card-body">
+                    <p class="card-title"><i>Revolutionary in considering the many uses the cloth fabric could have been used for other things</i></p>
+                    <form class="form-inline">
+                        <div class="form-group">
+                          <label for="inputPassword6">Designed By: </label>
+                          <input style="width: 240px;" type="text" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline">
+                        </div>
+                      </form>
+                    <form class="form-inline">
+                        <div class="form-group">
+                          <label for="inputPassword6">Product Date: </label>
+                          <input style="width: 100px;" type="text" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline">
+                        </div>
+                      </form>
+
+                </div>
+                <a href="#2" id="two">
+                    <div class="card-footer bg-primary text-light text-center">
+                        Check
+                    </div>
+                </a>
+            </div>
+        </div>
+        <br class="my-5">
+
+
+    </div>
+
+    <script>
+
+        function remove_card(c, id, btn, a) {
+            let flashcard = document.getElementById(c);
+            flashcard.remove();
+            insert_answer(c, id, btn, a);
+        }
+
+        function insert_answer(c, id, btn, a) {
+            let container = document.getElementById(id);
+            let inner_html = ""
+            
+            if (a) {
+                inner_html =
+                    '<div class="card correct flashcard-appear" id=' + c + ' style="height: 400px; width: 400px; object-fit: cover;">' +
+                    '<div class="card-body">' +
+                    '<p class="card-text correct-text just text-center"> Correct! </p>' +
+                    '</div>' +
+                    '<a href="#" id=' + btn + '>' +
+                    '<div class="card-footer bg-success text-light text-center">Next</div>' +
+                    '</a>' +
+                    '</div>';
+            } else {
+                inner_html =
+                    '<div class="card wrong flashcard-appear" id=' + c + ' style="height: 400px; width: 400px; object-fit: cover;">' +
+                    '<div class="card-body">' +
+                    '<p class="card-text wrong-text just text-center"> Wrong Answers: </p>' +
+                    '<p class="card-text wrong-text just text-center"> Product Date: 1958 </p>' +
+                    '</div>' +
+                    '<a href="#" id=' + btn + '>' +
+                    '<div class="card-footer bg-danger text-light text-center">Next</div>' +
+                    '</a>' +
+                    '</div>';
+            }
+
+            container.innerHTML = inner_html;
+            if (a) {
+            container.classList.add('correct')
+            }
+            else {
+            container.classList.add('wrong')
+            }
+            document.getElementById(btn).addEventListener('click', function () {
+                document.getElementById(id).classList.remove('flashcard-appear')
+                document.getElementById(id).classList.add('flashcard-clicked');
+                setTimeout(function () {
+                    remove_card('c1', '1', 'one');
+                }, 600);
+
+            });
+        }
+
+        document.getElementById('one').addEventListener('click', function () {
+            document.getElementById('c1').classList.add('flashcard-clicked');
+            setTimeout(function () {
+                remove_card('c1', '1', 'one', true);
+            }, 600);
+
+        });
+
+        document.getElementById('two').addEventListener('click', function () {
+            document.getElementById('c2').classList.add('flashcard-clicked');
+            setTimeout(function () {
+                remove_card('c2', '2', 'two', false);
+            }, 600);
+
+        });
+
+        document.getElementById('three').addEventListener('click', function () {
+            document.getElementById('c3').classList.add('flashcard-clicked');
+            setTimeout(function () {
+                remove_card('c3', '3', 'three');
+            }, 600);
+
+        });
+
+    </script>
+    
+</body>
+{% endblock %}

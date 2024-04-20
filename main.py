@@ -9,7 +9,7 @@ app = Flask(__name__)
 @app.route('/')
 
 def index():
-    return redirect(url_for("home"), code=302)
+    return redirect(url_for("login"), code=302)
 
 @app.route('/sign', methods=['GET','POST'])
 def sign():
@@ -23,7 +23,7 @@ def login():
     if request.method == "POST":
         email = request.form["email"]
         password = request.form["password"]
-
+        return redirect(url_for('home'))  
         if user_in_database(email):
             if password_check(email, password):
                 return redirect(url_for('home'))   
@@ -36,7 +36,11 @@ def login():
     
 @app.route('/home')
 def home():
-    return render_template("game.html")
+    return render_template("demo2.html")
+
+@app.route('/assignment_one')
+def assignment_one():
+    return render_template("demo1.html")
 
 
 @app.route('/game')

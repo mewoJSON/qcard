@@ -1,13 +1,14 @@
 {% extends "header.html" %}
 
+
 {% block body %}
 <body>
-    <div class="mt-5 pt-5" style="max-width: 80%; margin: auto;">
+    <div class="mt-5 pt-5 text-center" style="max-width: 60%; margin: auto;">
         <div class="row">
             <div class="col-21 col-sm-8 col-md-6 m-auto">
-                <div class="card border-0 shadow box-area">
+                <div class="card border-0 shadow">
                     <div class="card-body">
-                        <div class="">
+                        <div class="text-center align-items-center justify-content-center">
                             {% block page %} {% endblock %}
                         </div>
                     </div>
@@ -16,4 +17,5 @@
         </div>
     </div>
 </body>
+</html>
 {% endblock %}

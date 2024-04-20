@@ -1,0 +1,20 @@
+{% include 'navbar.html' %}
+
+<h1 class="py-2 px-4">Dashboard</h1>
+
+<div class="container w-50 h-50 py-3">
+<div class="row row-cols-1 row-cols-md-4 g-4">
+
+
+{% with img="/static/img/add.png", text="",title="New Game" %}
+  {% include 'menu_item.html' %}
+{% endwith %}
+{% with img="/static/img/university-of-kentucky-logo.jpg", text="Flashcard",title="Patent Quiz #1" %}
+  {% include 'menu_item.html' %}
+{% endwith %}
+{% with img="/static/img/university-of-kentucky-logo.jpg", text="Drag-and-Drop",title="Patent Quiz #2" %}
+  {% include 'menu_item.html' %}
+{% endwith %}
+
+
+</div>
